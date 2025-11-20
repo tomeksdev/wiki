@@ -1,0 +1,43 @@
+---
+layout: default
+---
+{% assign section_id = page.nav_id | default: page.section %}
+{% assign section_data = site.data.sections[section_id] %}
+{% assign shelves = site.shelves | where: "section", section_id %}
+<nav aria-label="Breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{ '/' | relative_url }}">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{{ page.title }}</li>
+  </ol>
+</nav>
+<section class="hero">
+  <div>
+    <p class="text-uppercase text-muted mb-2" style="letter-spacing: 3px; font-size: 0.8rem;">{{ section_data.badge | default: 'Knowledge Base' }}</p>
+    <h2>{{ page.title }}</h2>
+    <p>{{ section_data.intro | default: page.description }}</p>
+  </div>
+  {% if page.hero_link and page.hero_link_text %}
+    <div>
+      <a class="btn btn-outline-light" href="{{ page.hero_link | relative_url }}">{{ page.hero_link_text }}</a>
+    </div>
+  {% endif %}
+</section>
+<section class="content-layout">
+  {% if shelves.size > 0 %}
+    <div class="shelf-grid">
+      {% for shelf in shelves %}
+        <a class="shelf-card" href="{{ shelf.url | relative_url }}">
+          <div class="meta">{{ shelf.category | default: 'Shelf' }} · Updated {{ shelf.date | date: '%b %d, %Y' }}</div>
+          <h3>{{ shelf.title }}</h3>
+          <p>{{ shelf.summary | default: shelf.excerpt | strip_html | truncate: 140 }}</p>
+          <div class="meta">Maintained by {{ shelf.author | default: 'Wiki Team' }}{% if shelf.read_time %} · {{ shelf.read_time }} min read{% endif %}</div>
+        </a>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="shelf-card">
+      <h3>Nothing here yet</h3>
+      <p>This section is ready for shelves. Create a new markdown file in the <code>_shelves</code> collection with <code>section: {{ section_id }}</code>.</p>
+    </div>
+  {% endif %}
+</section>

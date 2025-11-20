@@ -1,0 +1,22 @@
+home:
+  heading: Welcome to the TomeksDEV Wiki
+  intro: >-
+    Jump into curated shelves of infrastructure, architecture decisions, and project documentation.
+  hero_cta: "Browse Shelves"
+  hero_cta_link: /architecture/
+architecture:
+  intro: >-
+    Shelves that document the infrastructure stack: network, servers, backup and security patterns.
+  badge: Infrastructure
+project-doc:
+  intro: >-
+    Living documentation for the active internal projects with runbooks, rollouts, and SOPs.
+  badge: Delivery
+snippets:
+  intro: >-
+    Handy configuration snippets, scripts, and troubleshooting steps.
+  badge: Utilities
+contact:
+  intro: >-
+    Contact information and meta pages about maintaining this wiki.
+  badge: Meta

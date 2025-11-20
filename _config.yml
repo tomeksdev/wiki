@@ -1,0 +1,45 @@
+title: TomeksDEV Wiki
+description: >-
+  Private wiki built with Jekyll and styled after the provided Bookstack-inspired template.
+baseurl: ""
+url: ""
+permalink: pretty
+exclude:
+  - template_home.html
+  - Gemfile.lock
+markdown: kramdown
+kramdown:
+  input: GFM
+
+sass:
+  sass_dir: _scss
+  style: compressed
+
+collections:
+  shelves:
+    output: true
+    permalink: /:collection/:name/
+  docs:
+    output: true
+    permalink: /docs/:name/
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: default
+  - scope:
+      path: ""
+      type: "shelves"
+    values:
+      layout: shelf
+  - scope:
+      path: ""
+      type: "docs"
+    values:
+      layout: doc
