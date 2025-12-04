@@ -1,19 +1,23 @@
 - id: home
-  title: Home
+  title: Introduction
   url: /
-  icon: fa-solid fa-house
-- id: architecture
-  title: Architecture
-  url: /architecture/
-  icon: fa-solid fa-diagram-project
-- id: project-doc
-  title: Project DOC
-  url: /project-doc/
-  icon: fa-solid fa-gauge-high
-- id: snippets
-  title: Snippets
-  url: /snippets/
-  icon: fa-solid fa-code
+  icon: fa-solid fa-book-open
+- id: getting-started
+  title: Getting started
+  url: /getting-started/
+  icon: fa-solid fa-rocket
+- id: content-authoring
+  title: Content authoring
+  url: /content-authoring/
+  icon: fa-solid fa-pen-to-square
+- id: troubleshooting
+  title: Troubleshooting
+  url: /troubleshooting/
+  icon: fa-solid fa-circle-exclamation
+- id: licensing
+  title: Licensing
+  url: /licensing/
+  icon: fa-solid fa-scale-balanced
 - id: contact
   title: Contact
   url: /contact/

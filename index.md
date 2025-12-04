@@ -1,35 +1,17 @@
 ---
 layout: default
-title: Home
+title: Introduction
 nav_id: home
 permalink: /
 ---
 <section class="hero">
-  <h1>Hey there — welcome to the TomeksDEV Wiki</h1>
-  <p>Think of this as your backstage pass to how everything runs:</p>
-  <ul>
-    <li>💾 <strong>Infrastructure setups</strong></li>
-    <li>🧠 <strong>Architecture decisions</strong></li>
-    <li>🛠️ <strong>Project insights &amp; docs</strong></li>
-  </ul>
-  <p>Grab what you need, when you need it.</p>
-</section>
-{% assign latest_docs = site.docs | sort: "date" | reverse %}
-{% if latest_docs.size > 0 %}
-<section class="content-layout" style="margin-bottom:2rem;">
-  <h2 style="font-weight:700;">Latest documentation</h2>
-  <div class="shelf-grid">
-    {% for doc in latest_docs limit:4 %}
-      <a class="shelf-card" href="{{ doc.url | relative_url }}">
-        <div class="meta">{{ doc.category | default: 'Doc' }} · {{ doc.date | date: "%b %d, %Y" }}</div>
-        <h3>{{ doc.title }}</h3>
-        <p>{{ doc.summary | default: doc.excerpt | strip_html | truncate: 140 }}</p>
-        <div class="meta">Author: {{ doc.author | default: 'Unknown' }}{% if doc.read_time %} · {{ doc.read_time }} min read{% endif %}</div>
-      </a>
-    {% endfor %}
+  <h1>TomeksDEV Wiki</h1>
+  <p>A self-hostable Jekyll wiki template. Install it locally, run it on a server, or publish it with GitHub Pages and keep content synced from Git.</p>
+  <div class="d-flex flex-wrap gap-3">
+    <a class="btn btn-primary" href="{{ '/getting-started/' | relative_url }}">Install the wiki</a>
+    <a class="btn btn-outline-light" href="{{ '/content-authoring/' | relative_url }}">Write and style docs</a>
   </div>
 </section>
-{% endif %}
 <section class="content-layout">
   <div class="shelf-grid">
     {% for item in site.data.navigation %}
@@ -38,9 +20,20 @@ permalink: /
         <a class="shelf-card" href="{{ item.url | relative_url }}">
           <div class="meta">{{ section_data.badge | default: 'Section' }}</div>
           <h3>{{ item.title }}</h3>
-          <p>{{ section_data.intro | default: 'Dive into this shelf to start documenting.' }}</p>
+          <p>{{ section_data.intro | default: 'Start here to explore this topic.' }}</p>
         </a>
       {% endunless %}
     {% endfor %}
+  </div>
+</section>
+<section class="content-layout">
+  <div class="shelf-card">
+    <h3>What you get</h3>
+    <ul>
+      <li>Multiple deployment paths: local dev, bare-metal hosting, Docker, or GitHub Pages.</li>
+      <li>Structured authoring with navigation, sections, shelves, and doc pages.</li>
+      <li>Branding knobs: colors, logo, fonts, and layout tweaks via SCSS.</li>
+      <li>Automation patterns to keep content synced from any Git remote.</li>
+    </ul>
   </div>
 </section>

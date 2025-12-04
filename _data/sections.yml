@@ -1,21 +1,25 @@
 home:
-  heading: Welcome to the TomeksDEV Wiki
+  heading: TomeksDEV Wiki
   intro: >-
-    Jump into curated shelves of infrastructure, architecture decisions, and project documentation.
-  hero_cta: "Browse Shelves"
-  hero_cta_link: /architecture/
-architecture:
+    A small, self-hostable wiki template with guides for installing, publishing, and maintaining your docs.
+  hero_cta: "Start with installation"
+  hero_cta_link: /getting-started/
+getting-started:
   intro: >-
-    Shelves that document the infrastructure stack: network, servers, backup and security patterns.
-  badge: Infrastructure
-project-doc:
+    Step-by-step installation options: local OS packages, bare-metal hosting, Docker, and GitHub Pages.
+  badge: Setup
+content-authoring:
   intro: >-
-    Living documentation for the active internal projects with runbooks, rollouts, and SOPs.
-  badge: Delivery
-snippets:
+    How to structure navigation, create sections and shelves, write docs, and brand the site.
+  badge: Writing
+troubleshooting:
   intro: >-
-    Handy configuration snippets, scripts, and troubleshooting steps.
-  badge: Utilities
+    Quick fixes for build errors, asset loading, and deployment gotchas.
+  badge: Support
+licensing:
+  intro: >-
+    Apache 2.0 licensing details and how to keep this wiki open and usable by anyone.
+  badge: Legal
 contact:
   intro: >-
     Contact information and meta pages about maintaining this wiki.
