@@ -221,4 +221,4 @@ Automate builds via cron or CI whenever you push updates.
 
 ## License
 
-MIT License (see `LICENSE`). Feel free to adapt this wiki for your own infrastructure documentation.
+Apache-2.0 License (see `LICENSE`). Feel free to adapt this wiki for your own infrastructure documentation.
