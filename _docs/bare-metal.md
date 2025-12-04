@@ -4,8 +4,8 @@ parent_shelf: getting-started
 nav_id: getting-started
 category: Setup
 summary: Build the site on a server and serve it with Nginx or Apache.
-author: TomeksDEV
-date: 2024-12-04
+author: Vujca
+date: 2025-12-04
 ---
 ### 1) Prepare the host
 - Create a non-root user with sudo.

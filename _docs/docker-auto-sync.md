@@ -4,8 +4,8 @@ parent_shelf: getting-started
 nav_id: getting-started
 category: Setup
 summary: Run Jekyll in Docker and keep content synced from a Git remote.
-author: TomeksDEV
-date: 2024-12-04
+author: Vujca
+date: 2025-12-04
 ---
 Use a git-sync sidecar plus the official Jekyll image.
 

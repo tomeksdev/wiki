@@ -4,8 +4,8 @@ parent_shelf: content-authoring
 nav_id: content-authoring
 category: Authoring
 summary: How the sidebar is built and how to control the order of items.
-author: TomeksDEV
-date: 2024-12-04
+author: Vujca
+date: 2025-12-04
 ---
 ### How the sidebar works
 - **Home** is the only static entry.

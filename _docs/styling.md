@@ -4,8 +4,8 @@ parent_shelf: content-authoring
 nav_id: content-authoring
 category: Authoring
 summary: Change colors, logos, and typography through SCSS and assets.
-author: TomeksDEV
-date: 2024-12-04
+author: Vujca
+date: 2025-12-04
 ---
 ### Where to edit
 - `_scss/_variables.scss`: color tokens (dark and light theme via CSS variables).

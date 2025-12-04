@@ -4,8 +4,8 @@ parent_shelf: content-authoring
 nav_id: content-authoring
 category: Authoring
 summary: Keep the wiki updated automatically from a Git remote.
-author: TomeksDEV
-date: 2024-12-04
+author: Vujca
+date: 2025-12-04
 ---
 ### Bare metal / VM (systemd timer)
 - Use the `wiki-refresh.timer` example from the bare-metal guide.

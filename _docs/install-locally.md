@@ -4,8 +4,8 @@ parent_shelf: getting-started
 nav_id: getting-started
 category: Setup
 summary: Install Ruby, Bundler, and Jekyll on your workstation to develop and preview the wiki.
-author: TomeksDEV
-date: 2024-12-04
+author: Vujca
+date: 2025-12-04
 ---
 ### 1) Install dependencies
 - **Debian/Ubuntu**: `sudo apt update && sudo apt install ruby-full build-essential zlib1g-dev git`

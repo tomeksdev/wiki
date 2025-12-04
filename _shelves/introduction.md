@@ -6,9 +6,9 @@ nav_title: Introduction
 nav_icon: fa-solid fa-book-open
 category: Overview
 summary: What this wiki template is, how it is organized, and how to use it.
-author: TomeksDEV
+author: Vujca
 order: 1
-date: 2024-12-04
+date: 2025-12-04
 ---
 Welcome to the TomeksDEV Wiki template. It is a small Jekyll-powered wiki you can run locally, host on any web server, or publish with GitHub Pages.
 

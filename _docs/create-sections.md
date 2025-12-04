@@ -4,8 +4,8 @@ parent_shelf: content-authoring
 nav_id: content-authoring
 category: Authoring
 summary: Add or remove shelves to change the sidebar items.
-author: TomeksDEV
-date: 2024-12-04
+author: Vujca
+date: 2025-12-04
 ---
 Shelves act as “sections” in this template.
 

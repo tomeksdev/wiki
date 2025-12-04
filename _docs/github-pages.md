@@ -4,8 +4,8 @@ parent_shelf: getting-started
 nav_id: getting-started
 category: Setup
 summary: Publish the wiki with GitHub Pages using the main branch or a prebuilt site.
-author: TomeksDEV
-date: 2024-12-04
+author: Vujca
+date: 2025-12-04
 ---
 ### 1) Repo setup
 - Keep the `CNAME` file updated if you use a custom domain.

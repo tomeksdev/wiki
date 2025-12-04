@@ -4,8 +4,8 @@ parent_shelf: troubleshooting
 nav_id: troubleshooting
 category: Support
 summary: Fix common build failures, asset issues, and deployment problems.
-author: TomeksDEV
-date: 2024-12-04
+author: Vujca
+date: 2025-12-04
 ---
 ### Build errors
 - Run `bundle exec jekyll build --trace` to see the full stack trace.

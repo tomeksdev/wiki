@@ -4,8 +4,8 @@ parent_shelf: licensing
 nav_id: licensing
 category: Legal
 summary: How the Apache 2.0 license applies to this wiki template.
-author: TomeksDEV
-date: 2024-12-04
+author: Vujca
+date: 2025-12-04
 ---
 ### Key points
 - You may use, modify, and distribute the code for personal, commercial, and open-source projects.
