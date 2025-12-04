@@ -7,46 +7,47 @@
 }
 
 .shelf-card {
-  background: $color-card;
+  background: var(--color-card);
   border-radius: 18px;
   padding: 1.75rem;
-  border: 1px solid rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--color-border);
   display: flex;
   flex-direction: column;
   gap: 0.9rem;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
-  transition: transform 0.25s, border-color 0.25s;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
   text-decoration: none;
   color: inherit;
 
   h3 {
     margin: 0;
     font-weight: 600;
-    color: #fff;
+    color: var(--color-text);
   }
 
   p {
     margin-bottom: 0;
-    color: #c5c5c5;
+    color: var(--color-muted);
   }
 
   .meta {
     font-size: 0.85rem;
-    color: #a3a3a3;
+    color: var(--color-muted);
   }
 }
 
 .shelf-grid .shelf-card:hover {
   transform: translateY(-6px);
-  background: #353535;
+  border-color: var(--color-accent);
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.28);
 }
 
 .hero {
-  background: $color-card;
+  background: var(--color-card);
   padding: 2rem;
   border-radius: 18px;
   margin-bottom: 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--color-border);
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -59,7 +60,7 @@
 
   p {
     margin: 0;
-    color: #c5c5c5;
+    color: var(--color-muted);
     font-size: 1.05rem;
   }
 }
@@ -74,7 +75,7 @@
   background: transparent;
   padding: 0;
   margin-bottom: 1.75rem;
-  color: #b0b0b0;
+  color: var(--color-muted);
 
   .breadcrumb-item.active {
     color: inherit;
@@ -82,5 +83,30 @@
 }
 
 .breadcrumb-item + .breadcrumb-item::before {
-  color: #666;
+  color: var(--color-muted);
+}
+
+.footer-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 0.45rem 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
 }

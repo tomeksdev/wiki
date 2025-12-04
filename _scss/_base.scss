@@ -8,8 +8,8 @@
 
 body {
   font-family: $font-sans;
-  background-color: $color-bg;
-  color: $color-text;
+  background-color: var(--color-bg);
+  color: var(--color-text);
   min-height: 100vh;
   overflow-x: hidden;
 }

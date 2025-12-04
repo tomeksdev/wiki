@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,20 +19,59 @@
       <p class="subtitle">Wiki &amp; documentation</p>
     </div>
     <nav class="nav-menu">
-      {% assign current_nav = page.nav_id | default: page.section | default: "" %}
-      {% for item in site.data.navigation %}
-        <a class="nav-item{% if current_nav == item.id %} active{% endif %}" href="{{ item.url | relative_url }}">
-          {% if item.icon %}<i class="{{ item.icon }}" aria-hidden="true"></i>{% endif %}
-          {{ item.title }}
+      {% assign current_nav = page.nav_id | default: page.parent_shelf | default: page.shelf_id | default: page.section | default: "" %}
+      {% assign shelves_nav = site.shelves | where_exp: 's', 's.nav_hidden != true' | sort: "order" %}
+      <a class="nav-item{% if current_nav == 'home' %} active{% endif %}" href="{{ '/' | relative_url }}">
+        <i class="fa-solid fa-house" aria-hidden="true"></i> Home
+      </a>
+      {% for shelf in shelves_nav %}
+        <a class="nav-item{% if current_nav == shelf.nav_id or current_nav == shelf.shelf_id %} active{% endif %}" href="{{ shelf.url | relative_url }}">
+          {% if shelf.nav_icon %}<i class="{{ shelf.nav_icon }}" aria-hidden="true"></i>{% endif %}
+          {{ shelf.nav_title | default: shelf.title }}
         </a>
       {% endfor %}
+      <a class="nav-item{% if current_nav == 'contact' %} active{% endif %}" href="{{ '/contact/' | relative_url }}">
+        <i class="fa-solid fa-envelope" aria-hidden="true"></i> Contact
+      </a>
     </nav>
     <div class="footer-sidebar">
-      <div>© {{ "now" | date: "%Y" }} {{ site.title }}</div>
+      <div class="footer-meta">
+        <span>© {{ "now" | date: "%Y" }} {{ site.title }}</span>
+        <button class="theme-toggle" type="button" data-theme-toggle>
+          <i class="fa-solid fa-moon" aria-hidden="true"></i>
+          <span data-theme-label>Dark mode</span>
+        </button>
+      </div>
     </div>
   </aside>
   <main class="main-content">
     {{ content }}
   </main>
+  <script>
+    (() => {
+      const storageKey = 'wiki-theme';
+      const root = document.documentElement;
+      const button = document.querySelector('[data-theme-toggle]');
+      const label = document.querySelector('[data-theme-label]');
+
+      const setTheme = (theme) => {
+        root.setAttribute('data-theme', theme);
+        localStorage.setItem(storageKey, theme);
+        if (label) {
+          label.textContent = theme === 'light' ? 'Switch to dark' : 'Switch to light';
+        }
+      };
+
+      const stored = localStorage.getItem(storageKey);
+      setTheme(stored || 'dark');
+
+      if (button) {
+        button.addEventListener('click', () => {
+          const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+          setTheme(next);
+        });
+      }
+    })();
+  </script>
 </body>
 </html>

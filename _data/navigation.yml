@@ -1,23 +1,7 @@
 - id: home
-  title: Introduction
+  title: Home
   url: /
-  icon: fa-solid fa-book-open
-- id: getting-started
-  title: Getting started
-  url: /getting-started/
-  icon: fa-solid fa-rocket
-- id: content-authoring
-  title: Content authoring
-  url: /content-authoring/
-  icon: fa-solid fa-pen-to-square
-- id: troubleshooting
-  title: Troubleshooting
-  url: /troubleshooting/
-  icon: fa-solid fa-circle-exclamation
-- id: licensing
-  title: Licensing
-  url: /licensing/
-  icon: fa-solid fa-scale-balanced
+  icon: fa-solid fa-house
 - id: contact
   title: Contact
   url: /contact/

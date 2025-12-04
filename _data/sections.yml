@@ -1,26 +1,26 @@
 home:
   heading: TomeksDEV Wiki
   intro: >-
-    A small, self-hostable wiki template with guides for installing, publishing, and maintaining your docs.
-  hero_cta: "Start with installation"
-  hero_cta_link: /getting-started/
+    A lightweight Jekyll wiki template you can self-host or publish on GitHub Pages.
+  hero_cta: "Start installing"
+  hero_cta_link: /shelves/getting-started/
 getting-started:
   intro: >-
-    Step-by-step installation options: local OS packages, bare-metal hosting, Docker, and GitHub Pages.
+    Installation paths for local dev, bare metal, Docker with git sync, and GitHub Pages.
   badge: Setup
 content-authoring:
   intro: >-
-    How to structure navigation, create sections and shelves, write docs, and brand the site.
+    Structure navigation, build shelves, add docs, and brand the site with your colors and logo.
   badge: Writing
 troubleshooting:
   intro: >-
-    Quick fixes for build errors, asset loading, and deployment gotchas.
+    Fix common build, asset, and deployment issues.
   badge: Support
 licensing:
   intro: >-
-    Apache 2.0 licensing details and how to keep this wiki open and usable by anyone.
+    Apache 2.0 license notes and guidance for re-use.
   badge: Legal
 contact:
   intro: >-
-    Contact information and meta pages about maintaining this wiki.
+    Contact information and ownership notes for this wiki.
   badge: Meta

@@ -1,15 +1,11 @@
 ---
 layout: default
 ---
-{% assign section_id = page.section | default: page.nav_id %}
-{% assign shelf_handle = page.shelf_id | default: page.slug %}
+{% assign shelf_handle = page.shelf_id | default: page.slug | default: page.nav_id %}
 {% assign shelf_docs = site.docs | where: "parent_shelf", shelf_handle %}
 <nav aria-label="Breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{ '/' | relative_url }}">Home</a></li>
-    {% if section_id %}
-    <li class="breadcrumb-item"><a href="/{{ section_id }}/">{{ section_id | replace: '-', ' ' | capitalize }}</a></li>
-    {% endif %}
     <li class="breadcrumb-item active" aria-current="page">{{ page.title }}</li>
   </ol>
 </nav>
@@ -31,7 +27,7 @@ layout: default
         <div class="meta">{{ doc.category | default: 'Doc' }}{% if doc.date %} · Updated {{ doc.date | date: '%b %d, %Y' }}{% endif %}</div>
         <h3>{{ doc.title }}</h3>
         <p>{{ doc.summary | default: doc.excerpt | strip_html | truncate: 120 }}</p>
-        <div class="meta">Maintained by {{ doc.author | default: 'Wiki Team' }}{% if doc.read_time %} · {{ doc.read_time }} min read{% endif %}</div>
+        <div class="meta">Maintained by {{ doc.author | default: 'Wiki Team' }}</div>
       </a>
     {% endfor %}
   </div>

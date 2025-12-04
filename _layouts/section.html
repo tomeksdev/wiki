@@ -30,7 +30,7 @@ layout: default
           <div class="meta">{{ shelf.category | default: 'Shelf' }} · Updated {{ shelf.date | date: '%b %d, %Y' }}</div>
           <h3>{{ shelf.title }}</h3>
           <p>{{ shelf.summary | default: shelf.excerpt | strip_html | truncate: 140 }}</p>
-          <div class="meta">Maintained by {{ shelf.author | default: 'Wiki Team' }}{% if shelf.read_time %} · {{ shelf.read_time }} min read{% endif %}</div>
+          <div class="meta">Maintained by {{ shelf.author | default: 'Wiki Team' }}</div>
         </a>
       {% endfor %}
     </div>
