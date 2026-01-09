@@ -4,6 +4,7 @@ description: >-
 baseurl: ""
 url: ""
 permalink: pretty
+project_mode: multi # single or multi
 default_project_id: wiki
 exclude:
   - template_home.html
