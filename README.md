@@ -4,7 +4,7 @@ Bookstack-inspired wiki powered by Jekyll. Content is grouped into projects (opt
 
 ![GitHub release](https://img.shields.io/badge/release-v1.1.0-darkgreen)
 
-[![pages-build-deployment](https://github.com/tomeksdev/wiki/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/tomeksdev/wiki/actions/workflows/pages/pages-build-deployment) [![CodeQL Advanced](https://github.com/tomeksdev/wiki/actions/workflows/codeql.yml/badge.svg)](https://github.com/tomeksdev/wiki/actions/workflows/codeql.yml) [![Bundler Audit](https://github.com/tomeksdev/wiki/actions/workflows/bundler-audit.yml/badge.svg)](https://github.com/tomeksdev/wiki/actions/workflows/bundler-audit.yml) [![Scorecard supply-chain security](https://github.com/tomeksdev/wiki/actions/workflows/scorecard.yml/badge.svg)](https://github.com/tomeksdev/wiki/actions/workflows/scorecard.yml)
+[![pages-build-deployment](https://github.com/tomeksdev/wiki/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/tomeksdev/wiki/actions/workflows/pages/pages-build-deployment) [![CodeQL Advanced](https://github.com/tomeksdev/wiki/actions/workflows/codeql.yml/badge.svg)](https://github.com/tomeksdev/wiki/actions/workflows/codeql.yml) [![Bundler Audit](https://github.com/tomeksdev/wiki/actions/workflows/bundler-audit.yml/badge.svg)](https://github.com/tomeksdev/wiki/actions/workflows/bundler-audit.yml)
 
 ## Features
 
