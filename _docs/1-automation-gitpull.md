@@ -1,10 +1,12 @@
 ---
 title: Automating git pulls for content updates
-parent_shelf: content-authoring
-nav_id: content-authoring
+parent_shelf: getting-started
+project_id: wiki
+nav_id: getting-started
 category: Authoring
 summary: Keep the wiki updated automatically from a Git remote.
 author: Vujca
+order: 5
 date: 2025-12-04
 ---
 ### Bare metal / VM (systemd timer)

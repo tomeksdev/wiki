@@ -1,10 +1,12 @@
 ---
 title: GitHub Pages deployment
 parent_shelf: getting-started
+project_id: wiki
 nav_id: getting-started
 category: Setup
 summary: Publish the wiki with GitHub Pages using the main branch or a prebuilt site.
 author: Vujca
+order: 3
 date: 2025-12-04
 ---
 ### 1) Repo setup

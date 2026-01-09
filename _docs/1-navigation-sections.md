@@ -1,10 +1,12 @@
 ---
 title: Navigation & sections
 parent_shelf: content-authoring
+project_id: wiki
 nav_id: content-authoring
 category: Authoring
 summary: How the sidebar is built and how to control the order of items.
 author: Vujca
+order: 5
 date: 2025-12-04
 ---
 ### How the sidebar works

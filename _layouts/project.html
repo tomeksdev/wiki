@@ -1,0 +1,42 @@
+---
+layout: default
+---
+{% assign project_handle = page.project_id | default: page.slug | default: page.nav_id %}
+{% assign project_shelves = site.shelves | where: "project_id", project_handle | sort: "order" %}
+<nav aria-label="Breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{ '/' | relative_url }}">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{{ page.title }}</li>
+  </ol>
+</nav>
+<article class="shelf-card" style="padding: 2.5rem;">
+  <header class="mb-4">
+    <p class="meta mb-1">{{ page.category | default: 'Project' }}{% if page.date %} · Updated {{ page.date | date: '%b %d, %Y' }}{% endif %}</p>
+    <h1 style="margin-bottom: 1rem;">{{ page.title }}</h1>
+    {% if page.summary %}<p class="lead">{{ page.summary }}</p>{% endif %}
+  </header>
+  <div class="prose">
+    {{ content }}
+  </div>
+</article>
+{% if project_shelves.size > 0 %}
+<section class="content-layout" style="margin-top: 2rem;">
+  <div class="shelf-grid">
+    {% for shelf in project_shelves %}
+      <a class="shelf-card" href="{{ shelf.url | relative_url }}">
+        <div class="meta">{{ shelf.category | default: 'Shelf' }}{% if shelf.date %} · Updated {{ shelf.date | date: '%b %d, %Y' }}{% endif %}</div>
+        <h3>{{ shelf.title }}</h3>
+        <p>{{ shelf.summary | default: shelf.excerpt | strip_html | truncate: 120 }}</p>
+        <div class="meta">Maintained by {{ shelf.author | default: 'Wiki Team' }}</div>
+      </a>
+    {% endfor %}
+  </div>
+</section>
+{% else %}
+<section class="content-layout" style="margin-top: 2rem;">
+  <div class="shelf-card">
+    <h3>Nothing here yet</h3>
+    <p>This project is ready for shelves. Add markdown files to <code>_shelves</code> with <code>project_id: {{ project_handle }}</code> to populate it.</p>
+  </div>
+</section>
+{% endif %}

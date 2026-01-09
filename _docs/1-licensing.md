@@ -1,10 +1,12 @@
 ---
 title: Licensing (Apache 2.0)
 parent_shelf: licensing
+project_id: wiki
 nav_id: licensing
 category: Legal
 summary: How the Apache 2.0 license applies to this wiki template.
 author: Vujca
+order: 1
 date: 2025-12-04
 ---
 ### Key points

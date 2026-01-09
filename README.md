@@ -1,25 +1,31 @@
 # TomeksDEV Wiki
 
-Bookstack-inspired wiki powered by Jekyll. Content is grouped into “shelves” such as Architecture, Project DOC, or Snippets; each shelf can expose deeper documentation cards and breadcrumbs automatically.
+Bookstack-inspired wiki powered by Jekyll. Content is grouped into projects (optional) and “shelves”; each shelf can expose deeper documentation cards and breadcrumbs automatically.
+
+![GitHub release](https://img.shields.io/badge/release-v1.1.0-darkgreen)
+
+[![pages-build-deployment](https://github.com/tomeksdev/wiki/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/tomeksdev/wiki/actions/workflows/pages/pages-build-deployment) [![CodeQL Advanced](https://github.com/tomeksdev/wiki/actions/workflows/codeql.yml/badge.svg)](https://github.com/tomeksdev/wiki/actions/workflows/codeql.yml) [![Bundler Audit](https://github.com/tomeksdev/wiki/actions/workflows/bundler-audit.yml/badge.svg)](https://github.com/tomeksdev/wiki/actions/workflows/bundler-audit.yml) [![Scorecard supply-chain security](https://github.com/tomeksdev/wiki/actions/workflows/scorecard.yml/badge.svg)](https://github.com/tomeksdev/wiki/actions/workflows/scorecard.yml)
 
 ## Features
 
-- Persistent left sidebar navigation rendered from `_data/navigation.yml`.
-- Shelves and docs stored as separate collections (`_shelves`, `_docs`) for clean authoring.
+- Switchable **single-project** (shelves-only) or **multi-project** navigation (`project_mode` in `_config.yml`).
+- Sidebar highlights the active project while browsing shelves/docs in multi-project mode and prefixes project names with their `order`.
+- Projects, shelves, and docs stored as separate collections (`_projects`, `_shelves`, `_docs`) for clean authoring and scoping.
 - Modular SCSS stack in `_scss/` compiled to `assets/css/style.css`.
 - Bootstrap 5.3 + Font Awesome 6.4 delivered locally (no CDN dependency).
 - Ready-to-run on macOS/Linux, Docker Compose, or GitHub Pages.
 
 ## Repository layout
 
-- `_layouts/default.html` – base layout with sidebar + typography.
-- `_layouts/section.html` – lists shelves for Architecture, Project DOC, etc.
-- `_layouts/shelf.html` – shelf detail page; automatically lists child docs.
-- `_layouts/doc.html` – deep dive documentation layout.
-- `_data/navigation.yml` – sidebar links and icons.
-- `_data/sections.yml` – hero copy and badges per section.
-- `_shelves/*.md` – main shelf entries (`section`, `shelf_id`, metadata).
-- `_docs/*.md` – documentation cards referenced by `parent_shelf`.
+- `_layouts/default.html` – base layout with sidebar + theme toggles.
+- `_layouts/project.html` – project landing; lists shelves within a project.
+- `_layouts/shelf.html` – shelf detail page; automatically lists child docs for that project.
+- `_layouts/doc.html` – deep dive documentation layout with breadcrumbs to project/shelf.
+- `_projects/*.md` – project entries (`project_id`, `order`, nav metadata).
+- `_shelves/*.md` – shelf entries (`project_id`, `shelf_id`, metadata).
+- `_docs/*.md` – documentation cards (`project_id`, `parent_shelf`).
+- `_data/navigation.yml` – global links (Home/Contact); stays short on purpose.
+- `_data/sections.yml` – hero copy and badges per section (optional legacy use).
 - `_scss/*` + `assets/css/style.scss` – SCSS partials & build entry.
 - `assets/vendor/bootstrap/*`, `assets/vendor/fontawesome/*` – vendored CSS/fonts.
 - `template_home.html` – static design reference (excluded from builds).
@@ -67,27 +73,67 @@ bundle exec jekyll serve --livereload
 
 Visit <http://localhost:4000>. Live reload refreshes as you edit shelves/docs.
 
+## Single-project vs multi-project
+
+You can run the wiki as a single project (original behavior) or as multiple projects side by side. Switch modes in `_config.yml`:
+
+- `project_mode: single` and `default_project_id: wiki` (or your preferred ID) show shelves for only that project in the sidebar.
+- `project_mode: multi` lists every project in `_projects/` in the sidebar. Clicking a project keeps it highlighted while you browse its shelves and docs.
+- Project ordering: set `order` in each `_projects/*.md` file to control sidebar order; the order number is prefixed before the project name in multi-project mode. In single-project mode the sidebar shows shelves, so the prefix is hidden.
+
+### Example front matter (projects)
+
+```yaml
+---
+title: WireGuard Install with GUI
+project_id: wireguard-gui
+nav_id: wireguard-gui         # used for active state; usually matches project_id
+nav_title: WireGuard GUI Installer
+nav_icon: fa-solid fa-lock
+order: 2                      # controls sidebar order in multi-project mode
+summary: Documentation for the WireGuard GUI installer.
+category: Networking
+author: TomeksDEV
+---
+```
+
+### How the menu behaves
+- Single-project: sidebar shows shelves for `default_project_id` only. Use each shelf’s `order` to sort.
+- Multi-project: sidebar shows projects with numeric prefixes from `order`. Inside a project, shelves still sort by their own `order`. Breadcrumbs show Home → Project → Shelf/Doc.
+
+### Naming for easier maintenance
+- For multi-project setups, consider prefixing filenames in `_projects/`, `_shelves/`, and `_docs/` with a two-digit order to keep them grouped when browsing the repo. Example: `_projects/01-wiki.md`, `_projects/02-wireguard-gui.md`; `_shelves/01-getting-started.md`; `_docs/01-install.md`.
+- The `order` front matter still controls display order; the numeric filename is just for your convenience.
+
+### Example project wiring
+- `_projects/wireguard-install-with-gui.md` → `_shelves/wireguard-install.md` → `_docs/wireguard-readme.md` shows a second project that lives beside the original `_projects/wiki.md`.
+
 ## Content authoring
 
 ### Adding a new shelf
 
 1. Create `_shelves/my-topic.md`.
-2. Fill the front matter:
+2. Fill the front matter (all commonly used fields shown):
 
    ```yaml
    ---
    title: My Topic
-   section: architecture   # architecture, project-doc, snippets, etc.
-   shelf_id: my-topic      # unique slug for linking docs
+   project_id: wiki            # project this shelf belongs to
+   shelf_id: my-topic          # unique slug; docs refer to this
+   nav_id: my-topic            # used for active state; usually same as shelf_id
+   nav_title: My Topic         # sidebar label (single-project mode)
+   nav_icon: fa-solid fa-book  # optional Font Awesome icon
    summary: Short description
    category: Infrastructure
+   order: 1                    # controls shelf order inside the project
    author: Vujca
    read_time: 5
    date: 2025-05-01
+   nav_hidden: false           # set true to hide from sidebar if needed
    ---
    ```
 
-3. Write Markdown content below the front matter. The shelf appears automatically on the corresponding section page.
+3. Write Markdown content below the front matter. The shelf appears automatically inside its project and (in single-project mode) in the sidebar.
 
 ### Adding a detailed doc beneath a shelf
 
@@ -97,28 +143,42 @@ Visit <http://localhost:4000>. Live reload refreshes as you edit shelves/docs.
    ```yaml
    ---
    title: Deployment Checklist
-   section: architecture
-   parent_shelf: my-topic   # matches shelf_id
+   project_id: wiki            # same project as the shelf
+   parent_shelf: my-topic      # matches shelf_id
+   nav_id: my-topic-deploy     # optional; for active state if needed
+    order: 1                    # controls display order within the shelf
    summary: Step-by-step deployment details.
    category: Runbook
    author: Platform Team
    read_time: 7
    date: 2025-05-05
+   nav_hidden: false
    ---
    ```
 
-3. The shelf page shows a card for every doc with matching `parent_shelf`.
+3. The shelf page shows a card for every doc with matching `parent_shelf` within the same `project_id`, ordered by `order`.
+
+### Adding another project (multi-project mode)
+
+1. Create `_projects/my-app.md` with `project_id`, `nav_title`, `order`, optional `nav_icon`, and a short description.
+2. Add shelves in `_shelves/` that set `project_id: my-app` and unique `shelf_id` values.
+3. Add docs in `_docs/` that set both `project_id: my-app` and `parent_shelf: <shelf_id>`.
+4. Switch `project_mode: multi` in `_config.yml` (or stay in single mode and set `default_project_id: my-app` if you want only that project).
 
 ### Navigation & sections
 
-- Update `_data/navigation.yml` to add sidebar entries (id/title/url/icon).
-- Extend `_data/sections.yml` for hero text/badges tied to nav IDs.
+- Sidebar behavior comes from `_layouts/default.html`. Home and Contact are hard-coded there; shelves or projects are injected dynamically based on `project_mode`.
+- `_data/navigation.yml` is intended for static nav items if you want more links; wire them into `_layouts/default.html` if you need additional global links.
+- `_data/sections.yml` is only used by the legacy `section` layout. For multi-project mode you do not need it. For single-project mode you typically rely on shelves instead of sections; keep it only if you create section pages using `_layouts/section.html`.
 
 ## Styling
 
-- All SCSS lives in `_scss/` partials and is composed via `_scss/main.scss`.
-- `assets/css/style.scss` has YAML front matter so Jekyll compiles it.
-- Fonts/Bootstrap/FontAwesome are vendored; update files inside `assets/vendor/*` if you upgrade versions.
+- All SCSS lives in `_scss/` partials and is composed via `_scss/main.scss`, compiled to `assets/css/style.css` by Jekyll.
+- Colors and typography: tweak `_scss/_variables.scss` (`--color-accent` for your red, `--color-bg`, `--color-text`, etc.).
+- Layout and components: `_scss/_layout.scss` and `_scss/_components.scss`.
+- Typography/content rendering (links, images, code blocks): `_scss/_prose.scss`.
+- `assets/css/style.scss` only imports `@use "main";` with front matter so Jekyll builds the stylesheet.
+- Vendored assets live in `assets/vendor/bootstrap/*` and `assets/vendor/fontawesome/*`; replace them if you upgrade versions.
 
 ## GitHub Pages deployment
 
@@ -164,7 +224,6 @@ Visit <http://localhost:4000>. Live reload refreshes as you edit shelves/docs.
 Use Docker when you want the wiki on your own server without installing Ruby:
 
 ```yaml
-version: "3.9"
 services:
   wiki:
     image: ghcr.io/jekyll/jekyll:4.3

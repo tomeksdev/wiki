@@ -1,11 +1,17 @@
 ---
 layout: default
 ---
+{% assign project_mode = site.project_mode | default: 'single' %}
 {% assign shelf_handle = page.parent_shelf | default: page.section %}
 {% assign shelf_page = site.shelves | where: "shelf_id", shelf_handle | first %}
+{% assign doc_project_id = page.project_id | default: shelf_page.project_id | default: site.default_project_id %}
+{% assign project_page = site.projects | where: "project_id", doc_project_id | first %}
 <nav aria-label="Breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{ '/' | relative_url }}">Home</a></li>
+    {% if project_mode == 'multi' and project_page %}
+      <li class="breadcrumb-item"><a href="{{ project_page.url | relative_url }}">{{ project_page.title }}</a></li>
+    {% endif %}
     {% if shelf_page %}
       <li class="breadcrumb-item"><a href="{{ shelf_page.url | relative_url }}">{{ shelf_page.title }}</a></li>
     {% endif %}

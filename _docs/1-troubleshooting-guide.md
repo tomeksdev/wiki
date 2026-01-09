@@ -1,10 +1,12 @@
 ---
 title: Troubleshooting guide
 parent_shelf: troubleshooting
+project_id: wiki
 nav_id: troubleshooting
 category: Support
 summary: Fix common build failures, asset issues, and deployment problems.
 author: Vujca
+order: 1
 date: 2025-12-04
 ---
 ### Build errors

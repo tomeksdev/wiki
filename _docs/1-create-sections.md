@@ -1,10 +1,12 @@
 ---
 title: Create sections (shelves)
 parent_shelf: content-authoring
+project_id: wiki
 nav_id: content-authoring
 category: Authoring
 summary: Add or remove shelves to change the sidebar items.
 author: Vujca
+order: 2
 date: 2025-12-04
 ---
 Shelves act as “sections” in this template.

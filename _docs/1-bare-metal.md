@@ -1,10 +1,12 @@
 ---
 title: Bare-metal installation
 parent_shelf: getting-started
+project_id: wiki
 nav_id: getting-started
 category: Setup
 summary: Build the site on a server and serve it with Nginx or Apache.
 author: Vujca
+order: 1
 date: 2025-12-04
 ---
 ### 1) Prepare the host

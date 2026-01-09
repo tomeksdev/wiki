@@ -1,10 +1,12 @@
 ---
 title: Install locally (Debian/Ubuntu/Fedora/CentOS/RHEL/macOS)
 parent_shelf: getting-started
+project_id: wiki
 nav_id: getting-started
 category: Setup
 summary: Install Ruby, Bundler, and Jekyll on your workstation to develop and preview the wiki.
 author: Vujca
+order: 4
 date: 2025-12-04
 ---
 ### 1) Install dependencies

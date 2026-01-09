@@ -1,10 +1,12 @@
 ---
 title: Adding a detailed doc beneath a shelf
 parent_shelf: content-authoring
+project_id: wiki
 nav_id: content-authoring
 category: Authoring
 summary: Create a doc page and link it to a shelf with parent_shelf.
 author: Vujca
+order: 4
 date: 2025-12-04
 ---
 ### Steps

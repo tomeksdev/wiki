@@ -1,10 +1,12 @@
 ---
 title: Styling (colors, logo, typography)
 parent_shelf: content-authoring
+project_id: wiki
 nav_id: content-authoring
 category: Authoring
 summary: Change colors, logos, and typography through SCSS and assets.
 author: Vujca
+order: 6
 date: 2025-12-04
 ---
 ### Where to edit

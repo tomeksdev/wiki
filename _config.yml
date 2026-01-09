@@ -4,6 +4,7 @@ description: >-
 baseurl: ""
 url: ""
 permalink: pretty
+default_project_id: wiki
 exclude:
   - template_home.html
   - Gemfile.lock
@@ -16,6 +17,9 @@ sass:
   style: compressed
 
 collections:
+  projects:
+    output: true
+    permalink: /projects/:name/
   shelves:
     output: true
     permalink: /:collection/:name/
@@ -35,11 +39,18 @@ defaults:
       layout: default
   - scope:
       path: ""
+      type: "projects"
+    values:
+      layout: project
+  - scope:
+      path: ""
       type: "shelves"
     values:
       layout: shelf
+      project_id: wiki
   - scope:
       path: ""
       type: "docs"
     values:
       layout: doc
+      project_id: wiki

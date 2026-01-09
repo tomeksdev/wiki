@@ -1,10 +1,12 @@
 ---
 title: Shelves
 parent_shelf: content-authoring
+project_id: wiki
 nav_id: content-authoring
 category: Authoring
 summary: Understand shelf fields and how docs attach to them.
 author: Vujca
+order: 3
 date: 2025-12-04
 ---
 Each shelf is a landing page plus metadata used for the sidebar.

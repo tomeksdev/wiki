@@ -19,24 +19,49 @@
       <p class="subtitle">Wiki &amp; documentation</p>
     </div>
     <nav class="nav-menu">
-      {% assign current_nav = page.nav_id | default: page.parent_shelf | default: page.shelf_id | default: page.section | default: "" %}
-      {% assign shelves_nav = site.shelves | where_exp: 's', 's.nav_hidden != true' | sort: "order" %}
-      <a class="nav-item{% if current_nav == 'home' %} active{% endif %}" href="{{ '/' | relative_url }}">
-        <i class="fa-solid fa-house" aria-hidden="true"></i> Home
-      </a>
-      {% for shelf in shelves_nav %}
-        <a class="nav-item{% if current_nav == shelf.nav_id or current_nav == shelf.shelf_id %} active{% endif %}" href="{{ shelf.url | relative_url }}">
-          {% if shelf.nav_icon %}<i class="{{ shelf.nav_icon }}" aria-hidden="true"></i>{% endif %}
-          {{ shelf.nav_title | default: shelf.title }}
+      {% assign project_mode = site.project_mode | default: 'single' %}
+      {% assign default_project_id = site.default_project_id | default: 'wiki' %}
+      {% assign current_project = page.project_id | default: default_project_id %}
+      {% if project_mode == 'multi' %}
+        {% if page.nav_id == 'home' %}
+          {% assign current_nav = 'home' %}
+        {% else %}
+          {% assign current_nav = current_project %}
+        {% endif %}
+        {% assign projects_nav = site.projects | where_exp: 'p', 'p.nav_hidden != true' | sort: "order" %}
+        <a class="nav-item{% if current_nav == 'home' %} active{% endif %}" href="{{ '/' | relative_url }}">
+          <i class="fa-solid fa-house" aria-hidden="true"></i> Home
         </a>
-      {% endfor %}
-      <a class="nav-item{% if current_nav == 'contact' %} active{% endif %}" href="{{ '/contact/' | relative_url }}">
-        <i class="fa-solid fa-envelope" aria-hidden="true"></i> Contact
-      </a>
+        {% for project in projects_nav %}
+          {% assign order_label = project.order | default: forloop.index %}
+          <a class="nav-item{% if current_nav == project.nav_id or current_nav == project.project_id %} active{% endif %}" href="{{ project.url | relative_url }}">
+            {% if project.nav_icon %}<i class="{{ project.nav_icon }}" aria-hidden="true"></i>{% endif %}
+            {{ project.nav_title | default: project.title }}
+          </a>
+        {% endfor %}
+        <a class="nav-item{% if current_nav == 'contact' %} active{% endif %}" href="{{ '/contact/' | relative_url }}">
+          <i class="fa-solid fa-envelope" aria-hidden="true"></i> Contact
+        </a>
+      {% else %}
+        {% assign current_nav = page.nav_id | default: page.parent_shelf | default: page.shelf_id | default: page.project_id | default: page.section | default: "" %}
+        {% assign shelves_nav = site.shelves | where: "project_id", default_project_id | where_exp: 's', 's.nav_hidden != true' | sort: "order" %}
+        <a class="nav-item{% if current_nav == 'home' %} active{% endif %}" href="{{ '/' | relative_url }}">
+          <i class="fa-solid fa-house" aria-hidden="true"></i> Home
+        </a>
+        {% for shelf in shelves_nav %}
+          <a class="nav-item{% if current_nav == shelf.nav_id or current_nav == shelf.shelf_id %} active{% endif %}" href="{{ shelf.url | relative_url }}">
+            {% if shelf.nav_icon %}<i class="{{ shelf.nav_icon }}" aria-hidden="true"></i>{% endif %}
+            {{ shelf.nav_title | default: shelf.title }}
+          </a>
+        {% endfor %}
+        <a class="nav-item{% if current_nav == 'contact' %} active{% endif %}" href="{{ '/contact/' | relative_url }}">
+          <i class="fa-solid fa-envelope" aria-hidden="true"></i> Contact
+        </a>
+      {% endif %}
     </nav>
     <div class="footer-sidebar">
       <div class="footer-meta">
-        <span>© {{ "now" | date: "%Y" }} {{ site.title }}</span>
+        <span>© {{ "now" | date: "%Y" }} {{ site.title }} · Crafted with Jekyll and a lot of coffee.</span>
         <button class="theme-toggle" type="button" data-theme-toggle>
           <i class="fa-solid fa-moon" aria-hidden="true"></i>
           <span data-theme-label>Dark mode</span>
@@ -71,6 +96,18 @@
           setTheme(next);
         });
       }
+    })();
+
+    // Open documentation links in a new tab without requiring manual target attributes.
+    (() => {
+      const proseLinks = document.querySelectorAll('.prose a');
+      proseLinks.forEach((link) => {
+        if (!link.hasAttribute('target')) {
+          link.setAttribute('target', '_blank');
+        }
+        const rel = link.getAttribute('rel');
+        link.setAttribute('rel', rel ? rel + ' noopener noreferrer' : 'noopener noreferrer');
+      });
     })();
   </script>
 </body>
